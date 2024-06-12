@@ -23,8 +23,8 @@ function loading() {
                     });
 
                 }, 50); // Slight delay to ensure display change is applied
-            }, 1000); // Match the transition duration in CSS (1 second)
-        }, 900);
+            }, 500); // Match the transition duration in CSS (1 second)
+        }, 500);
     });
 }
 loading();
