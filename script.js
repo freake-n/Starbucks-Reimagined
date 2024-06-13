@@ -1,17 +1,22 @@
 function loading() {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            // Fade out the loading screen
-            document.getElementById('loadingScreen').style.opacity = '0';
-            
+            // Move the loading screen out of the screen in -y direction and fade out
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.transition = 'transform 0.2s ease, opacity 0.2s ease'; // Fast transition
+            loadingScreen.style.transform = 'translateY(-100vh)';
+            loadingScreen.style.opacity = '0';
+
             // After the transition, hide the loading screen and show the content
             setTimeout(() => {
-                document.getElementById('loadingScreen').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
+                loadingScreen.style.display = 'none';
+                const content = document.getElementById('content');
+                content.style.display = 'block';
                 
                 // Fade in the content
                 setTimeout(() => {
-                    document.getElementById('content').style.opacity = '1';
+                    content.style.transition = 'opacity 0.2s ease'; // Fast transition for content
+                    content.style.opacity = '1';
 
                     // Start text animation once the loading is over
                     Shery.textAnimate(".stbu", {
@@ -22,9 +27,9 @@ function loading() {
                         multiplier: 0.1,
                     });
 
-                }, 50); // Slight delay to ensure display change is applied
-            }, 500); // Match the transition duration in CSS (1 second)
-        }, 500);
+                }, 10); // Slight delay to ensure display change is applied
+            }, 100); // Match the transition duration in CSS (0.2 second)
+        }, 100); // Short delay before starting the transition
     });
 }
 loading();
